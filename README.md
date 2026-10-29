@@ -170,7 +170,7 @@ The project is hosted live on Render:
 
 ---
 
-## 🎓 Viva & Project Evaluation Q&A
+
 
 **Q1: What is RAG and why is it preferred over fine-tuning?**  
 *Answer:* Fine-tuning adjusts model weights on a static dataset, which is computationally expensive and prone to hallucination. RAG dynamically retrieves the exact relevant chunks from uploaded documents at query time and injects them into the prompt, guaranteeing 100% factual accuracy and direct source citations.
@@ -184,7 +184,6 @@ The project is hosted live on Render:
 **Q4: How does the system handle high user load or API rate limits?**  
 *Answer:* NoteWise uses a multi-provider fallback architecture: queries primarily execute against Groq's high-throughput LPU infrastructure (`openai/gpt-oss-120b`). If rate-limited, it automatically routes to Google Gemini or synthesizes directly using the local Default Study Engine without crashing.
 
----
 
 ## 📜 License
 This project is open-source and developed for academic review and student learning.
