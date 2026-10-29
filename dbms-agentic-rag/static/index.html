@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteWise — Chat With Your Notes</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+  <!-- Minimal Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>NoteWise</h1>
+      <span>Chat with your lecture notes</span>
+    </div>
+
+    <!-- Upload Notes -->
+    <div class="sidebar-section">
+      <input type="file" id="file-input" style="display: none;" accept=".pdf,.txt">
+      <button class="upload-btn" id="upload-trigger">+ Upload Document</button>
+      <div id="upload-status" style="font-size: 0.72rem; color: var(--text-dim);"></div>
+    </div>
+
+    <!-- Uploaded Notes List -->
+    <div class="sidebar-section" style="flex: 1;">
+      <div class="section-title">Documents (<span id="doc-count">0</span>)</div>
+      <div class="doc-list" id="doc-list">
+        <div style="font-size: 0.75rem; color: var(--text-dim);">No notes uploaded.</div>
+      </div>
+    </div>
+
+    <!-- API Key Input -->
+    <div class="sidebar-section">
+      <div class="api-box">
+        <label for="api-key" style="font-size: 0.75rem; color: var(--text-dim);">API Key (Groq or Gemini)</label>
+        <input type="password" id="api-key" placeholder="Paste key (optional)">
+        <span>Leave blank to use notes directly without key.</span>
+      </div>
+    </div>
+
+    <!-- Reset -->
+    <button class="clear-btn" id="clear-btn">Clear all notes</button>
+  </aside>
+
+  <!-- Chat Stage -->
+  <main class="main">
+    <div class="chat-feed" id="chat-feed">
+      <div class="chat-container" id="chat-container">
+        <!-- Hero Box -->
+        <div class="hero" id="hero">
+          <h2>What would you like to know?</h2>
+          <div class="prompt-chips">
+            <button class="chip" onclick="ask('What is a Cursor and why is it used?')">
+              What is a Cursor and why is it used?
+            </button>
+            <button class="chip" onclick="ask('Explain Database Normalization (1NF, 2NF, 3NF)')">
+              Explain Database Normalization
+            </button>
+            <button class="chip" onclick="ask('How do B+ Trees optimize range search queries?')">
+              How do B+ Trees work?
+            </button>
+            <button class="chip" onclick="ask('What are the ACID properties in database transactions?')">
+              What are ACID properties?
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Input -->
+    <div class="input-wrapper">
+      <form class="input-box" id="chat-form" onsubmit="handleSubmit(event)">
+        <input 
+          type="text" 
+          id="chat-input" 
+          placeholder="Ask a question about your notes..." 
+          autocomplete="off"
+        >
+        <button type="submit" id="send-btn" aria-label="Send">↑</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

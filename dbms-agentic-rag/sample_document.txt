@@ -1,0 +1,28 @@
+Database Management Systems (DBMS) Notes
+
+Chapter 1: Relational Data Model
+A Database Management System (DBMS) is software designed to store, manage, and retrieve data efficiently.
+The relational model represents data as tables (relations), rows (tuples), and columns (attributes).
+A Primary Key uniquely identifies each row in a table and cannot be NULL.
+A Foreign Key is an attribute that references the primary key of another table to link data between tables.
+
+Chapter 2: Normalization
+Normalization is the process of organizing database relations to reduce data redundancy and eliminate anomalies.
+First Normal Form (1NF): All attributes contain atomic (indivisible) values.
+Second Normal Form (2NF): The table is in 1NF and all non-key columns depend on the whole primary key.
+Third Normal Form (3NF): The table is in 2NF and has no transitive dependencies (non-key columns depend only on the primary key).
+Boyce-Codd Normal Form (BCNF): A stricter version of 3NF where every determinant must be a candidate key.
+
+Chapter 3: Indexing and B+ Trees
+Indexes accelerate data search queries on disk storage.
+A B+ Tree is a self-balancing search tree where all data records are stored in the leaf nodes.
+Leaf nodes are connected with a doubly linked list, which makes range scans (e.g., finding values between 10 and 50) very fast.
+Internal nodes only store search keys and pointers, allowing very high fanout and shallow tree depth.
+
+Chapter 4: ACID Transactions
+A transaction is a single logical unit of work. ACID stands for:
+- Atomicity: All operations in the transaction succeed, or none do (all-or-nothing).
+- Consistency: The database moves from one valid state to another valid state.
+- Isolation: Concurrent transactions execute without interfering with one another.
+- Durability: Once committed, updates persist permanently even if the system crashes.
+Write-Ahead Logging (WAL) ensures durability by writing changes to a log file on disk before updating the actual database pages.
